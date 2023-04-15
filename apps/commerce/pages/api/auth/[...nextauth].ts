@@ -1,10 +1,10 @@
-import dbConnect from 'apps/commerce/lib/dbConnect'
-import User from 'apps/commerce/models/User'
-import jwt from 'jsonwebtoken'
-import NextAuth, { NextAuthOptions } from 'next-auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import GoogleProvider from 'next-auth/providers/google'
-import { compare } from 'bcrypt'
+import dbConnect from 'apps/commerce/lib/dbConnect';
+import User from 'apps/commerce/models/User';
+import jwt from 'jsonwebtoken';
+import NextAuth, { NextAuthOptions } from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import GoogleProvider from 'next-auth/providers/google';
+import { compare } from 'bcrypt';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -16,10 +16,13 @@ export const authOptions: NextAuthOptions = {
       name: 'credentials',
       credentials: {},
       async authorize(credentials) {
-        await dbConnect()
-        const { email, password } = credentials as { email: string; password: string }
-        const user = await User.findOne({ email }).lean()
-        const isPasswordMatched = await compare(password, user.password)
+        await dbConnect();
+        const { email, password } = credentials as {
+          email: string;
+          password: string;
+        };
+        const user = await User.findOne({ email }).lean();
+        const isPasswordMatched = await compare(password, user.password);
         if (user && isPasswordMatched) {
           return {
             id: user._id.toString(),
@@ -29,9 +32,9 @@ export const authOptions: NextAuthOptions = {
             password: undefined,
             roles: ['admin'],
             permissions: {},
-          }
+          };
         }
-        throw new Error('Invalid Credentials')
+        throw new Error('Invalid Credentials');
       },
     }),
   ],
@@ -43,10 +46,10 @@ export const authOptions: NextAuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   jwt: {
     async encode({ secret, token }) {
-      return jwt.sign(token, secret)
+      return jwt.sign(token, secret);
     },
     async decode({ secret, token }) {
-      return jwt.verify(token, secret)
+      return jwt.verify(token, secret);
     },
   },
   pages: {
@@ -55,14 +58,14 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
       if (account) {
-        token.accessToken = account.access_token
-        token.user = user
+        token.accessToken = account.access_token;
+        token.user = user;
       }
-      return token
+      return token;
     },
     async session({ session, token }) {
-      return { ...session, user: token.user }
+      return { ...session, user: token.user };
     },
   },
-}
-export default NextAuth(authOptions)
+};
+export default NextAuth(authOptions);

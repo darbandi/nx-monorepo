@@ -1,9 +1,9 @@
-import Home from '../containers/home'
+import Home from '../containers/home';
 
 export function Index() {
-  return <Home />
+  return <Home />;
 }
 
-export default Index
+export default Index;
 
-Index.auth = true
+Index.auth = true;

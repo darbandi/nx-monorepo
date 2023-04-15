@@ -6,25 +6,27 @@ import Document, {
   NextScript,
   DocumentContext,
   DocumentInitialProps,
-} from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
-    const originalRenderPage = ctx.renderPage
+  static async getInitialProps(
+    ctx: DocumentContext,
+  ): Promise<DocumentInitialProps> {
+    const originalRenderPage = ctx.renderPage;
 
-    const sheet = new ServerStyleSheet()
+    const sheet = new ServerStyleSheet();
 
     ctx.renderPage = () =>
       originalRenderPage({
         enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         enhanceComponent: (Component) => Component,
-      })
+      });
 
-    const intialProps = await Document.getInitialProps(ctx)
-    const styles = sheet.getStyleElement()
+    const intialProps = await Document.getInitialProps(ctx);
+    const styles = sheet.getStyleElement();
 
-    return { ...intialProps, styles }
+    return { ...intialProps, styles };
   }
 
   render() {
@@ -36,6 +38,6 @@ export default class CustomDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }
