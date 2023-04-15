@@ -1,9 +1,44 @@
-# NX Monorepo
-# NextJS 13
-# Next Auth
-# MongoDB
-# Release Note
-# Eslint
-# Prettier
-# MUI
-# TS Check
+## 🖥️ Server
+
+- NX Monorepo
+
+## 🛠️ Technologies
+
+- NextJS 13
+- Typescript
+
+## 🔒 Authentication
+
+- Next Auth
+- JWT
+
+## 🎨 UI
+
+- MUI
+- Styled Components
+
+## 🔄 State Management
+
+- Zustand
+
+## 🗃️ Database
+
+- MongoDB
+
+## 🔐 Encryption
+
+- BCrypt
+
+## 📐 TypeCheck And Fonmatter
+
+- Eslint
+- Prettier
+- Typescript
+
+## 📚 Other Libs
+
+- Release Note
+- TS Check
+- Next Connect
+- React Hook Form
+- YUP
