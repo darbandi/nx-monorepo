@@ -30,8 +30,6 @@ export const authOptions: NextAuthOptions = {
             _id: undefined,
             __v: undefined,
             password: undefined,
-            roles: ['admin'],
-            permissions: {},
           };
         }
         throw new Error('Invalid Credentials');
