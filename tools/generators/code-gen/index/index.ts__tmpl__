@@ -1,0 +1,14 @@
+<% for (let i =0; i <=endPoints.length - 1;  i++ ) { %>
+import { <%=endPoints[i]%>Api } from './<%=endPoints[i]%>Api.generated'<% } %>
+
+export const reducers = {<% for (let i =0; i <=endPoints.length - 1;  i++ ) { %>
+  [<%=endPoints[i]%>Api.reducerPath]: <%=endPoints[i]%>Api.reducer<% if (i !== endPoints.length - 1) { %> , <% } %><% } %>
+}
+
+export const middleware = [<% for (let i =0; i <=endPoints.length - 1;  i++ ) { %>
+  <%=endPoints[i]%>Api.middleware<% if (i !== endPoints.length - 1) { %> , <% } %><% } %>
+]
+
+export default {<% for (let i =0; i <=endPoints.length - 1;  i++ ) { %>
+  <%=endPoints[i]%>Api<% if (i !== endPoints.length - 1) { %> , <% } %><% } %>
+}

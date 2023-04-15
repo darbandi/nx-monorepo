@@ -1,0 +1,12 @@
+import type { ConfigFile } from '@rtk-query/codegen-openapi';
+
+const baseConfig: ConfigFile = {
+  schemaFile: 'http://dev.mazdax.tech/<%= endpoint %>/swagger/doc.json',
+  apiFile: '../../../../../../emptyApi',
+  apiImport: 'emptyApi',
+  outputFile: '../../../services/<%= endpoint %>Api.generated.ts',
+  exportName: '<%= endpoint %>Api',
+  hooks: { queries: true, lazyQueries: true, mutations: true },
+}
+
+export default baseConfig  
