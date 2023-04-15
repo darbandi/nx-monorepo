@@ -1,6 +1,6 @@
 {
   "name": "react-monorepo",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "start": "nx serve --port=3000",
@@ -75,6 +75,7 @@
     "@nrwl/vite": "15.9.2",
     "@nrwl/web": "15.2.1",
     "@nrwl/workspace": "^15.9.2",
+    "@release-it/conventional-changelog": "^5.1.1",
     "@swc/core": "^1.2.173",
     "@swc/jest": "0.2.20",
     "@testing-library/react": "13.4.0",
