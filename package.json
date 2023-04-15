@@ -1,6 +1,6 @@
 {
   "name": "react-monorepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "start": "nx serve --port=3000",
