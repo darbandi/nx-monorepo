@@ -1,9 +1,10 @@
 import dynamic from 'next/dynamic';
-const MainNoSSR = dynamic(() => import('../containers/main/MainNoSSR'), {
-  ssr: false,
-});
+import { getServerSidePropsWithTranslation } from '../lib/getServerSidePropsWithTranslation';
 const MainSSR = dynamic(() => import('../containers/main/MainSSR'), {
   ssr: true,
+});
+const MainNoSSR = dynamic(() => import('../containers/main/MainNoSSR'), {
+  ssr: false,
 });
 
 export function Index() {
@@ -14,5 +15,5 @@ export function Index() {
     </>
   );
 }
-
+export const getServerSideProps = getServerSidePropsWithTranslation;
 export default Index;

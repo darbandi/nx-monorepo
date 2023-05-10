@@ -1,6 +1,13 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "react-monorepo",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": "*",
+    ".eslintrc.json": "*",
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
+  },
   "affected": {
     "defaultBase": "master"
   },

@@ -26,10 +26,8 @@ export const authOptions: NextAuthOptions = {
         if (user && isPasswordMatched) {
           return {
             id: user._id.toString(),
-            ...user,
-            _id: undefined,
-            __v: undefined,
-            password: undefined,
+            name: user.userName,
+            email: user.email,
           };
         }
         throw new Error('Invalid Credentials');
